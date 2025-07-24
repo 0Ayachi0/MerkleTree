@@ -1,10 +1,10 @@
 ///|
 /// 表示字节数组的类型
-pub(all) typealias HexBytes = Array[UInt16]
+pub typealias Array[UInt16] as HexBytes
 
 ///|
 /// 表示十六进制字符串的类型
-pub(all) typealias HexString = String
+pub typealias String as HexString
 
 ///|
 pub fn string_slice(s : String, start : Int, end~ : Int = -1) -> String {

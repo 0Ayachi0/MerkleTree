@@ -1,6 +1,6 @@
 ///|
 /// 从叶子元素构建Merkle树
-pub fn create_tree[T : Eq + Hash](
+pub fn[T : Eq + Hash] create_tree(
   values : Array[T],
   leaf_hash : LeafHash[T],
   node_hash~ : NodeHash = standard_node_hash
@@ -29,25 +29,25 @@ pub fn create_tree[T : Eq + Hash](
 
 ///|
 /// 获取Merkle树的根哈希
-pub fn root[T : Eq + Hash](tree : MerkleTree[T]) -> HexString {
+pub fn[T : Eq + Hash] root(tree : MerkleTree[T]) -> HexString {
   tree.data.root
 }
 
 ///|
 /// 获取树中的叶子节点数量
-pub fn length[T : Eq + Hash](tree : MerkleTree[T]) -> Int {
+pub fn[T : Eq + Hash] length(tree : MerkleTree[T]) -> Int {
   tree.data.values.length()
 }
 
 ///|
 /// 验证树是否为空
-pub fn is_empty[T : Eq + Hash](tree : MerkleTree[T]) -> Bool {
+pub fn[T : Eq + Hash] is_empty(tree : MerkleTree[T]) -> Bool {
   tree.data.values.length() == 0
 }
 
 ///|
 /// 获取指定索引位置的叶子节点
-pub fn value_at[T : Eq + Hash](tree : MerkleTree[T], index : Int) -> T {
+pub fn[T : Eq + Hash] value_at(tree : MerkleTree[T], index : Int) -> T {
   if index < 0 || index >= tree.data.values.length() {
     abort("Index out of bounds")
   }
@@ -56,7 +56,7 @@ pub fn value_at[T : Eq + Hash](tree : MerkleTree[T], index : Int) -> T {
 
 ///|
 /// 获取值对应的索引
-pub fn get_value_index[T : Eq + Hash](tree : MerkleTree[T], value : T) -> Int {
+pub fn[T : Eq + Hash] get_value_index(tree : MerkleTree[T], value : T) -> Int {
   // 在value_map中查找值和索引的映射
   for tree_value in tree.data.value_map {
     if tree_value.value == value {
@@ -68,7 +68,7 @@ pub fn get_value_index[T : Eq + Hash](tree : MerkleTree[T], value : T) -> Int {
 
 ///|
 /// 验证单个叶子节点的Merkle证明
-pub fn verify[T : Eq + Hash](
+pub fn[T : Eq + Hash] verify(
   tree : MerkleTree[T],
   value : T,
   proof : Array[HexString]
@@ -82,7 +82,7 @@ pub fn verify[T : Eq + Hash](
 
 ///|
 /// 验证根哈希与提供的证明是否匹配给定的叶子值
-pub fn verify_with_root[T : Eq + Hash](
+pub fn[T : Eq + Hash] verify_with_root(
   value : T,
   proof : Array[HexString],
   root : HexString,
@@ -98,7 +98,7 @@ pub fn verify_with_root[T : Eq + Hash](
 
 ///|
 /// 验证多个叶子节点的Merkle证明
-pub fn verify_multi[T : Eq + Hash](
+pub fn[T : Eq + Hash] verify_multi(
   tree : MerkleTree[T],
   multi_proof : MultiProof[T]
 ) -> Bool {
@@ -115,7 +115,7 @@ pub fn verify_multi[T : Eq + Hash](
 
 ///|
 /// 验证多个叶子节点的Merkle证明与指定的根哈希是否匹配
-pub fn verify_multi_with_root[T : Eq + Hash](
+pub fn[T : Eq + Hash] verify_multi_with_root(
   multi_proof : MultiProof[T],
   root : HexString,
   leaf_hash : LeafHash[T],
@@ -134,7 +134,7 @@ pub fn verify_multi_with_root[T : Eq + Hash](
 
 ///|
 /// 返回树的字符串表示
-pub fn to_string[T : Eq + Hash](
+pub fn[T : Eq + Hash] to_string(
   tree : MerkleTree[T],
   value_to_string : (T) -> String
 ) -> String {
@@ -271,7 +271,7 @@ pub fn verify_proof(
 
 ///|
 /// 获取多个叶子节点的证明
-pub fn get_multi_proof[T : Eq + Hash](
+pub fn[T : Eq + Hash] get_multi_proof(
   leaves : Array[T],
   tree : Array[HexString],
   values : Array[TreeValue[T]]
@@ -340,7 +340,7 @@ pub fn get_multi_proof[T : Eq + Hash](
 ///|
 /// 验证多重证明
 /// 注意：这是一个复杂的算法，需要维护一个验证队列
-pub fn verify_multi_proof[T](
+pub fn[T] verify_multi_proof(
   leaves : Array[T],
   proof : Array[HexString],
   proof_flags : Array[Bool],
@@ -440,7 +440,7 @@ pub fn get_tree_layer_sizes(leaf_count : Int) -> Array[Int] {
 
 ///|
 /// 辅助函数：数组去重
-fn array_unique[T : Eq + Hash](arr : Array[T]) -> Array[T] {
+fn[T : Eq + Hash] array_unique(arr : Array[T]) -> Array[T] {
   let result = []
   let seen = @hashset.new()
   for item in arr {

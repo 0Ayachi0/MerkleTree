@@ -1,10 +1,10 @@
 ///|
 /// 叶子哈希函数类型
-pub typealias LeafHash[T] = (T) -> HexString
+pub typealias (T) -> HexString as LeafHash[T]
 
 ///|
 /// 节点哈希函数类型
-pub typealias NodeHash = (HexString, HexString) -> HexString
+pub typealias (HexString, HexString) -> HexString as NodeHash
 
 ///|
 /// 计算输入数据的keccak256哈希
@@ -74,7 +74,7 @@ pub fn standard_node_hash(a : HexString, b : HexString) -> HexString {
 /// 
 /// 返回:
 /// * 编码后的字节数组
-pub fn abi_encode[T](
+pub fn[T] abi_encode(
   types : Array[String],
   values : Array[T],
   to_string_fn : (T) -> String
