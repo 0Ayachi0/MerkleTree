@@ -1,6 +1,5 @@
-# Merkle Tree 实现
-
 [English](README_en.md) | 简体中文
+# Merkle Tree 实现
 
 一个基于MoonBit语言的高效Merkle树实现，支持创建树、生成证明和验证证明等功能，可用于数据完整性验证和区块链应用。
 
